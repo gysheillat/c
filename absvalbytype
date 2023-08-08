@@ -1,0 +1,58 @@
+/*
+********************************************************
+*** Program: absvalbytype                            ***
+*** Author: Gysheilla J (gysheilla.m.tita-1@ou.edu)  ***
+*** Course: CS 1313 010 Spring 2021                  ***
+*** Lab: Sec 013 Fridays 2:30pm                      ***
+*** Description: Calcuates the absolute value        ***
+***   after the user enters a input into program     ***
+********************************************************
+*/
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    const int int_code = 1, float_code = 2;
+    const int program_failure_code = -1;
+    const int program_success_code = 0;
+
+    float float_input_value, float_output_value;
+    int int_input_value, int_output_value;
+    int data_type_code;
+
+    printf("I'm going to calculate the absolute value\n");
+    printf("of a number that you input.\n");
+
+    printf("Would you like to input an int or a float?\n");
+    printf("(Enter %d for an int or %d for a float.)\n", int_code, float_code);
+
+    scanf("%d", &data_type_code);
+
+    if ((data_type_code != int_code) && (data_type_code != float_code)) {
+        printf("ERROR: I don't recognize data type code %d.\n", data_type_code);
+        exit(program_failure_code);
+    }
+
+    if (data_type_code == int_code) {
+        printf("What is the int value?\n");
+        scanf("%d", &int_input_value);
+    } else if (data_type_code == float_code) {
+        printf("What is the float value?\n");
+        scanf("%f", &float_input_value);
+    }
+
+    if (data_type_code == int_code) {
+        int_output_value = abs(int_input_value);
+    } else if (data_type_code == float_code) {
+        float_output_value = fabs(float_input_value);
+    }
+
+    if (data_type_code == int_code) {
+        printf("The absolute value of %d is %d.\n", int_input_value, int_output_value);
+    } else if (data_type_code == float_code) {
+        printf("The absolute value of %f is %f.\n", float_input_value, float_output_value);
+    }
+
+    return program_success_code;
+}
